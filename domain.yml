@@ -1,0 +1,42 @@
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- user_info
+- register_request
+- level 1 dynamix faq
+entities:
+- email
+slots:
+  email:
+    type: unfeaturized
+templates:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_slot_values:
+  - text: "Below are the details you entered: \n - Email: {email}\n"
+  utter_ask_email:
+  - text: Provide your email
+  utter_wrong_email:
+  - text: invalidate email,please provide proper email
+actions:
+- utter_greet
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_slot_values
+forms:
+- register_form
