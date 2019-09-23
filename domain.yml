@@ -9,18 +9,23 @@ intents:
     use_entities: []
 - register_request:
     use_entities: None
-- level 1 dynamix faq
 entities:
 - name
+- last_name
 - email
 - number
+- first_name
 slots:
   email:
+    type: unfeaturized
+  last_name:
     type: unfeaturized
   name:
     type: unfeaturized
     auto_fill: false
   number:
+    type: unfeaturized
+  requested_slot:
     type: unfeaturized
 templates:
   utter_greet:

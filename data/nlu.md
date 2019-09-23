@@ -19,7 +19,7 @@
 - see you around
 - see you later
 
-## intent:level 1 dynamix faq
+## intent:greet
 - hey
 - hello
 - hi
@@ -56,23 +56,24 @@
 - register
 - i want to register
 - help me with registeration process
+- registr me
 
 ## intent:user_info
-- [abhay](name)
-- [vaishali](name)
-- [aditya](name)
-- [waseef](name)
-- [tejas](name)
-- i am [abhay](name)
-- i am [vaishali](name)
-- i am [aditya](name)
-- i am [waseef](name)
-- i am [tejas](name)
-- my name is [abhay](name)
-- my name is [vaishali](name)
-- my name is [aditya](name)
-- my name is [waseef](name)
-- my name is [tejas](name)
+- [abhay](name) [gupta](last_name)
+- [vaishali](name) [gupta](last_name)
+- [aditya](name) [gupta](last_name)
+- [waseef](name) [shaikh](last_name)
+- [tejas](name) [kapoor](last_name)
+- i am [abhay](name) [gupta](last_name)
+- i am [vaishali](name) [gupta](last_name)
+- i am [aditya](name) [gupta](last_name)
+- i am [waseef](name) [shaikh](last_name)
+- i am [tejas](name) [kapoor](last_name)
+- my name is [abhay](name) [gupta](last_name)
+- my name is [vaishali](name) [gupta](last_name)
+- my name is [aditya](name) [gupta](last_name)
+- my name is [waseef](name) [gupta](last_name)
+- my name is [tejas](name) [gupta](last_name)
 - maxmeier@firma.de
 - bot-fan@bots.com
 - maxmeier@firma.de
@@ -122,3 +123,27 @@
 - 9055528674
 - 9355508086
 - 9855508478
+- [kasid](name) [khan](last_name)
+- [arbaz](name) [khan](last_name)
+- arbazkhan971@gmail.com
+- [7208557486](number)
+- I am [amit](name) [shukla](last_name)
+- arbazkhan971@ma.com
+- my name is [vikram](name) [singh](last_name) and email is [arbazkhan971@gmail.com](email) and phone number is [5216214511](number)
+- [7208557468](number)
+- [arbazkhan971@123.123](email)
+- [123@123.123](email)[123@123.123](email)
+- [arbazkhan9171@gmial.cm](email)
+- [sanjay](name)
+- [arbakhna971@gmail.com](email)
+- [888212248321](number)
+- [8574856885](number)
+- my name is [arbaz](first_name) [khan](last_name)
+- i am [arbaz](name) [khan](last_name)
+- i am [salim](name) [khan](last_name) and my email is [salimkhan123@gma.com](email) and phone is [299289283839](number)
+
+## lookup:name
+  /home/arbaz/email-extraction-using-rasa-master/data/first_names_all.txt
+
+## lookup:last_name
+  /home/arbaz/email-extraction-using-rasa-master/data/last_names_all.txt

@@ -3,38 +3,21 @@
 #
 # See this guide on how to implement these action:
 # https://rasa.com/docs/rasa/core/actions/#custom-actions/
-
-
 # This is a simple example for a custom action which utters "Hello World!"
+import re
+from typing import Any, Dict, List, Optional, Text, Union
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message("Hello World!")
-#
-#         return []
-from typing import Dict, Text, Any, List, Union, Optional
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.forms import FormAction,REQUESTED_SLOT
+from rasa_sdk.forms import REQUESTED_SLOT, FormAction
+
 
 class ActionRegisterUser(FormAction):
 
     def name(self):
         print("Inside name:")
         return "register_form"
+
 
     @staticmethod
     def required_slots(tracker: Tracker) -> List[Text]:
@@ -50,20 +33,32 @@ class ActionRegisterUser(FormAction):
         name = value
         if isinstance(value,str):
             return {"name": value}
+            print("inside validate name")
         else:
             dispatcher.utter_template("utter_wrong_name", tracker)
+            print("inside invalidate name")
             return {"name": None}
-
+    
+    @staticmethod
+    def isValidEmail(email):
+        if len(email) > 7:
+            if re.match("^.+@([?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?)$", email) != None:
+                return True
+        return False
     def validate_email(self, value, dispatcher, tracker, domain):
         """Check to see if an email entity was actually picked up by duckling."""
         print("Inside validate function of email")
         print("Inside validate function of email ",value)
-
-        if any(tracker.get_latest_entity_values("email")):
-            # entity was picked up, validate slot
+        # is_valid = validate_email(value)
+        # if(isValidEmail(value)):
+        # r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"if re.match(r'\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b',value):
+        if re.match(r"[a-zA-Z0-9_.+-]+@[a-zA-Z]+\.[^@]+", value):
             return {"email": value}
+            print("inside validate email")   
+            # entity was picked up, validate slot
         else:
             # no entity was picked up, we want to ask again
+            print("inside in validate email")
             dispatcher.utter_template("utter_wrong_email", tracker)
             return {"email": None}
             
@@ -71,12 +66,13 @@ class ActionRegisterUser(FormAction):
         """Check to see if an email entity was actually picked up by duckling."""
         print("Inside validate function of number")
         print("Inside validate function of number ",value)
-
-        if any(tracker.get_latest_entity_values("number")):
+        if re.match(r"^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$",str(value)):
             # entity was picked up, validate slot
+            print("inside validate number")
             return {"number": value}
         else:
-            # no entity was picked up, we want to ask again
+            # no entity was picked up, we want to ask again\
+            print("inside invalidate number")
             dispatcher.utter_template("utter_wrong_number", tracker)
             return {"number": None}
     
@@ -109,3 +105,4 @@ class ActionRegisterUser(FormAction):
         dispatcher.utter_template("utter_submit", tracker)
         print("Inside submit:")
         return []
+
