@@ -36,32 +36,29 @@ class ActionRegisterUser(FormAction):
         print("Inside name:")
         return "register_form"
 
-
     @staticmethod
     def required_slots(tracker: Tracker) -> List[Text]:
         print("Inside required_slots:")    
-        return ["email"]
-        # return ["name","email","number"]
+        return ["name","email","number"]
 
 
 
-    # def validate_name(self, value: Text, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict]:
-    #     print("Inside validate function")
-    #     print("Inside validate function name ",value)
+    def validate_name(self, value: Text, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict]:
+        print("Inside validate function")
+        print("Inside validate function name ",value)
 
-    #     name = value
-    #     if isinstance(value,str):
-    #         return {"name": value}
-    #     else:
-    #         dispatcher.utter_template("utter_wrong_name", tracker)
-    #         return {"name": None}
+        name = value
+        if isinstance(value,str):
+            return {"name": value}
+        else:
+            dispatcher.utter_template("utter_wrong_name", tracker)
+            return {"name": None}
 
     def validate_email(self, value, dispatcher, tracker, domain):
         """Check to see if an email entity was actually picked up by duckling."""
         print("Inside validate function of email")
         print("Inside validate function of email ",value)
-        email = tracker.get_latest_entity_values("email")
-        print(email)
+
         if any(tracker.get_latest_entity_values("email")):
             # entity was picked up, validate slot
             return {"email": value}
@@ -70,18 +67,18 @@ class ActionRegisterUser(FormAction):
             dispatcher.utter_template("utter_wrong_email", tracker)
             return {"email": None}
             
-    # def validate_number(self, value, dispatcher, tracker, domain):
-    #     """Check to see if an email entity was actually picked up by duckling."""
-    #     print("Inside validate function of number")
-    #     print("Inside validate function of number ",value)
+    def validate_number(self, value, dispatcher, tracker, domain):
+        """Check to see if an email entity was actually picked up by duckling."""
+        print("Inside validate function of number")
+        print("Inside validate function of number ",value)
 
-    #     if any(tracker.get_latest_entity_values("number")):
-    #         # entity was picked up, validate slot
-    #         return {"number": value}
-    #     else:
-    #         # no entity was picked up, we want to ask again
-    #         dispatcher.utter_template("utter_wrong_number", tracker)
-    #         return {"number": None}
+        if any(tracker.get_latest_entity_values("number")):
+            # entity was picked up, validate slot
+            return {"number": value}
+        else:
+            # no entity was picked up, we want to ask again
+            dispatcher.utter_template("utter_wrong_number", tracker)
+            return {"number": None}
     
     
 
@@ -96,19 +93,19 @@ class ActionRegisterUser(FormAction):
         print("slot mapping")
 
         return {
-            # "name": self.from_entity(entity="name", intent=["user_info"]),
+            "name": self.from_entity(entity="name", intent=["user_info"]),
             "email": [
                 self.from_entity(entity="email"),
                 self.from_text(intent="user_info"),
                 ],
-            # "number": [
-            #     self.from_entity(entity="number"),
-            #     self.from_text(intent="user_info"),
-            #     ]    
+            "number": [
+                self.from_entity(entity="number"),
+                self.from_text(intent="user_info"),
+                ]    
         }
     
     
     def submit(self, dispatcher: CollectingDispatcher, tracker: Tracker,domain: Dict[Text, Any]):
-        email = tracker.get_slot("email")
-        print("Inside submit:{}".format(email))
+        dispatcher.utter_template("utter_submit", tracker)
+        print("Inside submit:")
         return []

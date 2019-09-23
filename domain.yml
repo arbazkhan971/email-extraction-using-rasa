@@ -5,17 +5,38 @@ intents:
 - deny
 - mood_great
 - mood_unhappy
-- user_info
-- register_request
+- user_info:
+    use_entities: []
+- register_request:
+    use_entities: None
 - level 1 dynamix faq
 entities:
+- name
 - email
+- number
 slots:
   email:
+    type: unfeaturized
+  name:
+    type: unfeaturized
+    auto_fill: false
+  number:
     type: unfeaturized
 templates:
   utter_greet:
   - text: Hey! How are you?
+  utter_ask_name:
+  - text: Provide your name
+  utter_wrong_name:
+  - text: Wrong data type for name
+  utter_ask_email:
+  - text: Provide your email
+  utter_wrong_email:
+  - text: invalidate email,please provide proper email
+  utter_ask_number:
+  - text: Provide your number
+  utter_wrong_number:
+  - text: invalidate number,please provide proper number
   utter_cheer_up:
   - text: 'Here is something to cheer you up:'
     image: https://i.imgur.com/nGF1K8f.jpg
@@ -25,12 +46,11 @@ templates:
   - text: Great carry on!
   utter_goodbye:
   - text: Bye
+  utter_default:
+  - text: Didn't understand what you are talking about
   utter_slot_values:
-  - text: "Below are the details you entered: \n - Email: {email}\n"
-  utter_ask_email:
-  - text: Provide your email
-  utter_wrong_email:
-  - text: invalidate email,please provide proper email
+  - text: "Below are the details you entered: \n - Name: {name}\n - email:{email}\n\
+      \ - number: {number}\n "
 actions:
 - utter_greet
 - utter_cheer_up

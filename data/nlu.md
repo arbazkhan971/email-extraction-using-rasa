@@ -1,17 +1,3 @@
-## intent:level 1 dynamix faq
-- hey
-- hello
-- hi
-- good morning
-- good evening
-- hey there
-
-## intent:goodbye
-- bye
-- goodbye
-- see you around
-- see you later
-
 ## intent:affirm
 - yes
 - indeed
@@ -26,6 +12,20 @@
 - don't like that
 - no way
 - not really
+
+## intent:goodbye
+- bye
+- goodbye
+- see you around
+- see you later
+
+## intent:level 1 dynamix faq
+- hey
+- hello
+- hi
+- good morning
+- good evening
+- hey there
 
 ## intent:mood_great
 - perfect
@@ -49,7 +49,6 @@
 - extremely sad
 - so sad
 
-
 ## intent:register_request
 - register user
 - register me
@@ -59,7 +58,7 @@
 - help me with registeration process
 
 ## intent:user_info
-<!-- - [abhay](name)
+- [abhay](name)
 - [vaishali](name)
 - [aditya](name)
 - [waseef](name)
@@ -73,7 +72,7 @@
 - my name is [vaishali](name)
 - my name is [aditya](name)
 - my name is [waseef](name)
-- my name is [tejas](name) -->
+- my name is [tejas](name)
 - maxmeier@firma.de
 - bot-fan@bots.com
 - maxmeier@firma.de
@@ -93,7 +92,7 @@
 - solomq122@qq.mail.com
 - klausimausi@apple.com
 - ifuckrobots666@apple.com
-<!-- - my number is 9455596577
+- my number is 9455596577
 - number = 7555420330
 - 7555477048
 - 7555134058
@@ -122,4 +121,4 @@
 - 8555798267
 - 9055528674
 - 9355508086
-- 9855508478 -->
+- 9855508478
